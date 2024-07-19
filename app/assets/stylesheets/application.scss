@@ -31,3 +31,30 @@
 a{
     text-decoration: none;
 }
+.table {
+    border-collapse: separate;
+    border-spacing: 10px; /* This sets the cellspacing */
+  }
+
+  .table td, .table th {
+    padding: 10px; /* This sets the cellpadding */
+    text-align: center;
+  }
+.form{
+    justify-content: center;
+} 
+.PlayerButton {
+    color: rgb(255, 0, 149);
+    font-weight: bold;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: inline-block;
+  }
+.TeamButton {
+    color: rgb(38, 0, 255);
+    font-weight: bold;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
