@@ -1,11 +1,43 @@
-<h1>Teams</h1>
+<div class="d1">
+        <div class="text-white fw-bold p-5 fs-1">
+          T20 World Cup 
+        </div>
+    </div>
 
-<ul>
-  <% @team.each do |team| %>
-    <li>
-      <%= link_to team.name, team %>
-    </li>
-  <% end %>
-</ul>
+    <div class="  sticky-top bg-dark">
+       <div class="container d-flex justify-content-end">
+ 
+        <nav class="nav">
+            <a href="teams.html" class="nav-link" >Teams</a>
+        </nav>
 
-<%= link_to "New Team", new_team_path %>
+        <nav class="nav">
+            <a href="players.html" class="nav-link">Players</a>
+        </nav>
+
+       </div>
+     </div>
+<h1 class="text-center my-4">Teams</h1>
+
+<div class="container">
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-6">
+      <ul class="list-group">
+        <% @team.each do |team| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <%= link_to team.name, team %>
+            <%= link_to 'View', team, class: 'btn btn-primary btn-sm' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <%= link_to "New Team", new_team_path, class: 'btn btn-success btn-lg' %>
+    </div>
+            <%= link_to 'Go Back to Home', root_path, class: 'btn btn-secondary' %>
+      
+  </div>
+</div>

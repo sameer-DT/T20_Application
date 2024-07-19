@@ -1,33 +1,62 @@
-<h1>Player Details</h1>
+<div class="d1">
+        <div class="text-white fw-bold p-5 fs-1">
+          T20 World Cup 
+        </div>
+    </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @player.name %>
-</p>
+    <div class="  sticky-top bg-dark">
+       <div class="container d-flex justify-content-end">
+      
 
-<p>
-  <strong>Team ID:</strong>
-  <%= @player.team_id %>
-</p>
+        <nav class="nav">
+            <a href="teams.html" class="nav-link" >Teams</a>
+        </nav>
 
-<p>
-  <strong>Age:</strong>
-  <%= @player.age %>
-</p>
 
-<p>
-  <strong>Position:</strong>
-  <%= @player.position %>
-</p>
+        <nav class="nav">
+            <a href="players.html" class="nav-link">Players</a>
+        </nav>
 
-<p>
-  <strong>Role:</strong>
-  <%= @player.role %>
-</p>
+       </div>
+     </div>
+<div class="container mt-5">
+  <div class="text-center mb-4">
+    <h1>Player Details</h1>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @player.description %>
-</p>
-<%= link_to 'Edit', edit_player_path(@player) %> |
-<%= link_to 'Back', players_path %>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <dl class="row">
+            <dt class="col-sm-3">Name:</dt>
+            <dd class="col-sm-9"><%= @player.name %></dd>
+
+            <dt class="col-sm-3">Team ID:</dt>
+            <dd class="col-sm-9"><%= @player.team_id %></dd>
+
+            <dt class="col-sm-3">Age:</dt>
+            <dd class="col-sm-9"><%= @player.age %></dd>
+
+            <dt class="col-sm-3">Position:</dt>
+            <dd class="col-sm-9"><%= @player.position %></dd>
+
+            <dt class="col-sm-3">Role:</dt>
+            <dd class="col-sm-9"><%= @player.role %></dd>
+
+            <dt class="col-sm-3">Description:</dt>
+            <dd class="col-sm-9"><%= @player.description %></dd>
+          </dl>
+
+          <div class="text-center mt-4">
+            <%= link_to 'Edit', edit_player_path(@player), class: 'btn btn-primary' %>
+            <%= link_to 'Back', players_path, class: 'btn btn-secondary ms-2' %>
+
+                <%= link_to 'Go Back to Home', root_path, class: 'btn btn-secondary' %>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

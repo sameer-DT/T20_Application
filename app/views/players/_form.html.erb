@@ -1,35 +1,81 @@
+<div class="d1">
+        <div class="text-white fw-bold p-5 fs-1">
+          T20 World Cup 
+        </div>
+    </div>
+
+    <div class="  sticky-top bg-dark">
+       <div class="container d-flex justify-content-end">
+    
+
+        <nav class="nav">
+            <a href="teams.html" class="nav-link" >Teams</a>
+        </nav>
+
+
+        <nav class="nav">
+            <a href="players.html" class="nav-link">Players</a>
+        </nav>
+
+       </div>
+     </div>
+<div class="container mt-5">
   <% if @player.errors.any? %>
-    <h2>The following errors prevented the article from being saved</h2>
-    <ul>
-      <% @player.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading">The following errors prevented the article from being saved:</h4>
+      <ul>
+        <% @player.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
-  <%= form_for(@player) do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
 
-  <%= form.label :team_id %>
-  <%= form.text_field :team_id %>
+  <%= form_for(@player, html: { class: 'form' }) do |form| %>
+    <div class="form-group">
+      <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
 
-  <%= form.label :age %>
-  <%= form.number_field :age %>
+    <div class="form-group">
+      <%= form.label :team_id, class: 'form-label' %>
+      <%= form.text_field :team_id, class: 'form-control' %>
+    </div>
 
-  <%= form.label :position %>
-  <%= form.text_field :position %>
+    <div class="form-group">
+      <%= form.label :age, class: 'form-label' %>
+      <%= form.number_field :age, class: 'form-control' %>
+    </div>
 
-  <%= form.label :role %>
-  <%= form.text_field :role %>
+    <div class="form-group">
+      <%= form.label :position, class: 'form-label' %>
+      <%= form.text_field :position, class: 'form-control' %>
+    </div>
 
-  <%= form.label :is_captain %>
-  <%= form.check_box :is_captain %>
+    <div class="form-group">
+      <%= form.label :role %>
+      <%= form.select :role, options_for_select(Player::ROLES) %>
+    </div>
 
-  <%= form.label :is_active %>
-  <%= form.check_box :is_active %>
+    <div class="form-check mb-3">
+      <%= form.check_box :is_captain, class: 'form-check-input' %>
+      <%= form.label :is_captain, class: 'form-check-label' %>
+    </div>
 
-  <%= form.label :description %>
-  <%= form.text_area :description %>
+    <div class="form-check mb-3">
+      <%= form.check_box :is_active, class: 'form-check-input' %>
+      <%= form.label :is_active, class: 'form-check-label' %>
+    </div>
 
-  <%= form.submit %>
-<% end %>
+    <div class="form-group">
+      <%= form.label :description, class: 'form-label' %>
+      <%= form.text_area :description, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit 'Save Player', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+    <%= link_to 'Go Back to Home', root_path, class: 'btn btn-secondary' %>
+          
+</div>

@@ -1,11 +1,32 @@
-<h1>New Team</h1>
-
- <div class="container mt-5">
-        <center>
-            <h1>Add New Team</h1>
-        </center>
-        
-        <%= render 'form' %>
-        
-        <%= link_to 'Cancel', teams_path, class: 'btn btn-secondary mt-3' %>
+<div class="d1">
+        <div class="text-white fw-bold p-5 fs-1">
+          T20 World Cup 
+        </div>
     </div>
+
+    <div class="  sticky-top bg-dark">
+       <div class="container d-flex justify-content-end">
+    
+        <nav class="nav">
+            <a href="teams.html" class="nav-link" >Teams</a>
+        </nav>
+
+        <nav class="nav">
+            <a href="players.html" class="nav-link">Players</a>
+        </nav>
+
+       </div>
+     </div>
+<h1 class="text-center">New Team</h1>
+
+<div class="container mt-5">
+
+  <%= render 'form' %>
+
+  <div class="text-center mt-3">
+    <%= link_to 'Cancel', teams_path, class: 'btn btn-secondary' %>
+  </div>
+
+                <%= link_to 'Go Back to Home', root_path, class: 'btn btn-secondary' %>
+   
+</div>
