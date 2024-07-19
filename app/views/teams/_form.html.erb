@@ -1,28 +1,8 @@
-<div class="d1">
-        <div class="text-white fw-bold p-5 fs-1">
-          T20 World Cup 
-        </div>
-    </div>
 
-    <div class="  sticky-top bg-dark">
-       <div class="container d-flex justify-content-end">
-     
-        <nav class="nav">
-            <a href="teams.html" class="nav-link" >Teams</a>
-        </nav>
-
-       
-
-        <nav class="nav">
-            <a href="players.html" class="nav-link">Players</a>
-        </nav>
-
-       </div>
-     </div>
 <div class="container">
   <% if @team.errors.any? %>
     <div class="alert alert-danger">
-      <h4 class="alert-heading">The following errors prevented the article from being saved:</h4>
+      <h4 class="alert-heading">The following errors prevented the team from being saved:</h4>
       <ul>
         <% @team.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
