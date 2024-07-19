@@ -18,13 +18,15 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.save
-      redirect_to @team, notice: "Team Created Successfully."
+      flash[:notice]= "Team Added Successfully."
+      redirect_to @team 
     else
       render 'new',status:422
     end
   end
 
   def update
+    @team = Team.find(params[:id])
     if @team.update(team_params)
       flash[:notice]= 'Team Updated Successfully.'
       redirect_to @team
@@ -33,9 +35,19 @@ class TeamsController < ApplicationController
     end
   end
 
+  
+
   def destroy
-    @team.destroy
-    redirect_to teams_url, notice: 'Team Deleted Successfully.'
+        @team = Team.find(params[:id])
+        if @team.players.any?
+          flash[:alert] = 'Cannot delete team with associated players. Please remove or reassign players first.'
+          redirect_to @team
+        else
+          @team.destroy
+          flash[:notice] = 'Team deleted successfully.'
+          redirect_to teams_path
+        end
+    
   end
 
   private
@@ -49,3 +61,6 @@ class TeamsController < ApplicationController
   end
 
 end
+
+
+
