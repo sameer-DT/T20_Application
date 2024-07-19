@@ -1,0 +1,10 @@
+<h1><%= @team.name %></h1>
+
+<p>Country: <%= @team.country %></p>
+<p>Founded: <%= @team.founded %></p>
+<p>Description: <%= @team.description %></p>
+
+<%= link_to "Edit", edit_team_path(@team) %>
+<%= link_to "Delete", team_path(@team), method: :delete, data: {confirm: "Are you sure you want to delete this team?" } %>
+
+<%= link_to "Back to Teams", teams_path %>

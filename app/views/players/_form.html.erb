@@ -1,0 +1,35 @@
+  <% if @player.errors.any? %>
+    <h2>The following errors prevented the article from being saved</h2>
+    <ul>
+      <% @player.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= form_for(@player) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :team_id %>
+  <%= form.text_field :team_id %>
+
+  <%= form.label :age %>
+  <%= form.number_field :age %>
+
+  <%= form.label :position %>
+  <%= form.text_field :position %>
+
+  <%= form.label :role %>
+  <%= form.text_field :role %>
+
+  <%= form.label :is_captain %>
+  <%= form.check_box :is_captain %>
+
+  <%= form.label :is_active %>
+  <%= form.check_box :is_active %>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+
+  <%= form.submit %>
+<% end %>
