@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
   def home
-    # Any logic you want to execute
   end
 end

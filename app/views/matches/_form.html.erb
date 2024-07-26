@@ -1,0 +1,53 @@
+
+<div class="container mt-5">
+  <% if @match.errors.any? %>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading">All Fields are required</h4>
+      <ul>
+        <% @match.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_for(@match, html: { class: 'form' }) do |form| %>
+  <table class="form-table">
+    <tr class="form-group">
+      <td><%= form.label :date, class: 'form-label' %></td>
+      <td><%= form.date_field :date, class: 'form-control' %></td>
+    </tr>
+
+    <tr class="form-group">
+      <td><%= form.label :location, class: 'form-label' %></td>
+      <td><%= form.text_field :location, class: 'form-control' %></td>
+    </tr>
+
+    <tr class="form-group">
+      <td><%= form.label :score_team1, class: 'form-label' %></td>
+      <td><%= form.number_field :score_team1, class: 'form-control' %></td>
+    </tr>
+
+     <tr class="form-group">
+      <td><%= form.label :score_team2, class: 'form-label' %></td>
+      <td><%= form.number_field :score_team2, class: 'form-control' %></td>
+    </tr>
+
+     <tr class="form-group">
+      <td><%= form.label :team1_id, class: 'form-label' %></td>
+      <td><%= form.number_field :team1_id, class: 'form-control' %></td>
+    </tr>
+
+     <tr class="form-group">
+      <td><%= form.label :team2_id, class: 'form-label' %></td>
+      <td><%= form.number_field :team2_id, class: 'form-control' %></td>
+    </tr>
+
+    <tr class="form-group">
+      <td colspan="2"><%= form.submit 'Save Match', class: 'btn btn-primary' %></td>
+    </tr>
+  </table>
+<% end %>
+
+
+</div>

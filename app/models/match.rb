@@ -1,8 +1,25 @@
 require 'csv'
 class Match < ApplicationRecord
-    belongs_to :team1, class_name: 'Team', foreign_key: 'team1_id'
-    belongs_to :team2, class_name: 'Team', foreign_key: 'team2_id'
-  
+
+    validates :date, presence: true
+    validates :location, presence: true
+    validates :team1_id, presence: true
+    validates :team2_id, presence: true
+
+    belongs_to :team1, class_name: 'Team'
+    belongs_to :team2, class_name: 'Team'
+
+    has_many :teams, through: :players
+
+
+    scope :upcoming, -> {
+      where('match_date > ?', Date.current)
+    }
+
+    scope :within_date_range, ->(start_date,end_date){
+      where("date BETWEEN ? AND ?", start_date, end_date)
+    }
+
     def self.populate
       CSV.foreach("db/matches.csv", headers: true) do |row|
         match = Match.new
@@ -13,7 +30,8 @@ class Match < ApplicationRecord
         match.team1_id = row["team1_id"]
         match.team2_id = row["team2_id"]
         match.save!
-    end
+      end
   end
+ 
 end
 Match.populate

@@ -2,7 +2,7 @@
 <div class="container mt-5">
   <% if @player.errors.any? %>
     <div class="alert alert-danger">
-      <h4 class="alert-heading">The following errors prevented the player from being saved:</h4>
+      <h4 class="alert-heading">All Fields are required</h4>
       <ul>
         <% @player.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>

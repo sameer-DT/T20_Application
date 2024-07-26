@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_19_074742) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_26_071727) do
   create_table "matches", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.date "date"
     t.string "location"
@@ -41,7 +41,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_19_074742) do
     t.string "country", limit: 50, null: false
     t.integer "founded"
     t.text "description"
+    t.integer "player_count", default: 0, null: false
     t.index ["name"], name: "name", unique: true
+  end
+
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email"
+    t.string "password"
   end
 
   add_foreign_key "players", "teams"

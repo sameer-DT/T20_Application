@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :dummies
+  devise_for :users
+  
   resources:teams, only: [:show,:index,:new,:create,:edit,:update,:destroy]
   resources:players, only: [:show,:index,:new,:create,:edit,:update,:destroy]
-
+  resources:matches, only: [:show,:index,:new,:create,:edit,:update,:destroy]
   # resources:players, only: [:index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

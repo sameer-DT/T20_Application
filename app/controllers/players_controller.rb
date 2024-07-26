@@ -1,18 +1,20 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
-    @players = Player.all
+    @player = Player.all
     
     if params[:team_name].present?
-      @players = @players.joins(:team).where(teams: { name: params[:team_name] })
+      @player = @player.joins(:team).where(teams: { name: params[:team_name] })
     end
 
     if params[:player_name].present?
-      @players = @players.where("players.name LIKE ?", "%#{params[:player_name]}%")
+      @player = @player.where("players.name LIKE ?", "%#{params[:player_name]}%")
     end
 
     if params[:age_from].present? && params[:age_to].present?
-      @players = @players.where(age: params[:age_from]..params[:age_to])
+      @player = @player.where(age: params[:age_from]..params[:age_to])
     end
   end
 
@@ -30,10 +32,10 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
     if @player.save
-      flash[:notice] = "Player Created successfully!"
+      flash[:notice] = "Player Added successfully!"
       redirect_to @player
     else
-      render 'new'
+      render 'new',status:422
     end
   end
 
